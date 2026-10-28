@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EU-LEAP Carousel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --core:#003399; --core-soft:rgba(0,51,153,0.12); --core-light:#5B7FD1; --core-deep:#001F5C;
+  --canvas:#F3F6FA; --rule:#DFE6F0; --ink:#0D1421; --gold:#FFCC00;
+  --page:#EEF1F5; --muted:#5E6673;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --page:#0A0E16; --muted:#9AA3B2; }
+}
+:root[data-theme="dark"]{ --page:#0A0E16; --muted:#9AA3B2; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--page);display:flex;flex-direction:column;align-items:center;padding:24px 16px 40px;font-family:'DM Sans',sans-serif;}
+.head{font-family:'DM Serif Display',Georgia,serif;}
+.body{font-family:'DM Sans',sans-serif;}
+.lk-frame{width:540px;max-width:100%;background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.08);overflow:hidden;}
+.lk-header{display:flex;align-items:center;gap:10px;padding:12px 16px;}
+.lk-av{width:44px;height:44px;border-radius:50%;background:var(--core);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;}
+.lk-name{font-size:14px;font-weight:700;color:#1d1d1d;}
+.lk-name span{font-weight:400;color:#777;font-size:12px;margin-left:4px;}
+.lk-sub{font-size:12px;color:#777;}
+.lk-tag{margin-left:auto;font-size:11px;color:#555;border:1px solid #ccc;border-radius:12px;padding:2px 9px;}
+.lk-caption{padding:0 16px 10px;font-size:13px;color:#333;line-height:1.45;}
+.lk-caption b{color:#777;font-weight:400;}
+#viewport{width:540px;height:540px;overflow:hidden;position:relative;cursor:grab;user-select:none;}
+#track{display:flex;width:calc(540px * 8);height:540px;transition:transform 0.32s cubic-bezier(0.4,0,0.2,1);}
+.slide{width:540px;height:540px;flex-shrink:0;position:relative;overflow:hidden;padding:44px 64px 56px 40px;display:flex;flex-direction:column;justify-content:center;}
+.slide.grad:first-child{justify-content:flex-start;padding-top:70px;}
+.light{background:var(--canvas);color:var(--ink);}
+.dark{background:var(--ink);color:#fff;}
+.grad{background:linear-gradient(150deg,var(--core-deep) 0%,var(--core) 55%,var(--core-light) 100%);color:#fff;}
+.eyebrow{display:inline-block;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;}
+.h2{font-size:28px;line-height:1.1;letter-spacing:-0.3px;margin-bottom:18px;}
+.src{font-size:11px;opacity:0.5;margin-top:14px;}
+.dot{width:6px;height:6px;border-radius:50%;background:#ddd;transition:background 0.25s,transform 0.25s;cursor:pointer;}
+.dot.active{background:var(--core);transform:scale(1.25);}
+.lk-actions{display:flex;justify-content:space-between;padding:8px 16px 12px;border-top:1px solid #eee;}
+.lk-actions div{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#666;}
+@media (max-width:572px){ .lk-frame{transform-origin:top center;} }
+</style>
+</head>
+<body>
+
+<div class="lk-frame">
+  <div class="lk-header">
+    <div class="lk-av">AA</div>
+    <div>
+      <div class="lk-name">Dr. Ayman Ayad<span>· 1st</span></div>
+      <div class="lk-sub">Water, finance and the WEFE nexus</div>
+    </div>
+    <div class="lk-tag">Document</div>
+  </div>
+  <div class="lk-caption">Who buys? Who finances? Who validates? The EU Ambassador put those 3 questions to a ballroom of young engineers yesterday. <b>...see more</b></div>
+
+  <div id="viewport"><div id="track">
+
+    <!-- 1 COVER -->
+    <div class="slide grad">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:440px;height:440px;border-radius:50%;border:1px solid rgba(255,255,255,0.07);"></div>
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:320px;height:320px;border-radius:50%;border:1px solid rgba(255,255,255,0.07);"></div>
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;border:1px solid rgba(255,255,255,0.07);"></div>
+      <div style="position:relative;z-index:2;margin-top:40px;">
+        <span class="eyebrow body" style="color:var(--gold);">EU-LEAP · Cairo Water Week 2026</span>
+        <h1 class="head" style="font-size:40px;line-height:1.05;letter-spacing:-0.8px;font-weight:400;">Egypt has the water engineers. It's short of the first buyer.</h1>
+        <p class="body" style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:16px;">What one day of bankers, ministers and graduates told us · 28 Oct</p>
+      </div>
+      <div style="position:absolute;left:40px;bottom:54px;display:flex;align-items:center;gap:10px;z-index:3;">
+        <div style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;"><span class="head" style="color:#fff;font-size:15px;">AA</span></div>
+        <div><div class="body" style="font-size:13px;font-weight:700;">Dr. Ayman Ayad</div><div class="body" style="font-size:11px;color:rgba(255,255,255,0.55);">@aymanayadr · LinkedIn</div></div>
+      </div>
+      <div class="head" style="position:absolute;bottom:18px;left:28px;font-size:11px;letter-spacing:1.5px;color:rgba(255,255,255,0.4);">01 / 08</div>
+      <div style="position:absolute;right:0;top:0;bottom:0;width:44px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to right,transparent,rgba(255,255,255,0.07));z-index:8;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 5l5 5-5 5" stroke="rgba(255,255,255,0.32)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <!-- 2 THE BRIEF -->
+    <div class="slide light">
+      <div style="position:absolute;top:-80px;right:-60px;width:260px;height:260px;border-radius:50%;background:var(--core);opacity:0.06;"></div>
+      <div style="position:absolute;top:40px;right:30px;width:100px;height:100px;border-radius:50%;background:var(--gold);opacity:0.10;"></div>
+      <div style="position:relative;z-index:2;">
+        <span class="eyebrow body" style="color:var(--core);">The brief</span>
+        <h2 class="head h2" style="font-weight:400;">3 questions every young water firm has to answer</h2>
+        <div style="display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);"><span class="head" style="font-size:30px;color:var(--core);min-width:38px;line-height:1;">1</span><div><div class="body" style="font-size:15px;font-weight:700;">Who buys?</div><div class="body" style="font-size:12px;color:var(--muted);line-height:1.5;">A utility, ministry or factory ready to sign the order</div></div></div>
+        <div style="display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);"><span class="head" style="font-size:30px;color:var(--core);min-width:38px;line-height:1;">2</span><div><div class="body" style="font-size:15px;font-weight:700;">Who finances?</div><div class="body" style="font-size:12px;color:var(--muted);line-height:1.5;">A lender or investor able to price the risk</div></div></div>
+        <div style="display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);"><span class="head" style="font-size:30px;color:var(--core);min-width:38px;line-height:1;">3</span><div><div class="body" style="font-size:15px;font-weight:700;">Who validates?</div><div class="body" style="font-size:12px;color:var(--muted);line-height:1.5;">A test site or research centre that proves it works</div></div></div>
+        <div class="body src">Asked by H.E. Angelina Eichhorst, EU Ambassador to Egypt</div>
+      </div>
+      <div class="head" style="position:absolute;bottom:18px;left:28px;font-size:11px;letter-spacing:1.5px;color:rgba(0,0,0,0.22);">02 / 08</div>
+      <div style="position:absolute;right:0;top:0;bottom:0;width:44px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to right,transparent,rgba(0,0,0,0.05));z-index:8;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 5l5 5-5 5" stroke="rgba(0,0,0,0.22)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <!-- 3 DEMAND -->
+    <div class="slide dark">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.035) 1px,transparent 1px);background-size:22px 22px;"></div>
+      <div style="position:absolute;bottom:-100px;right:-80px;width:300px;height:300px;border-radius:50%;background:var(--core);opacity:0.18;"></div>
+      <div style="position:relative;z-index:2;">
+        <span class="eyebrow body" style="color:var(--gold);">Demand is real</span>
+        <h2 class="head h2" style="font-weight:400;">The buyers are already building</h2>
+        <div style="display:flex;gap:16px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.08);"><span class="head" style="font-size:26px;color:var(--core-light);min-width:110px;line-height:1;">4.8 bn m³</span><div class="body" style="font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.5;">a year added by national reuse plants</div></div>
+        <div style="display:flex;gap:16px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.08);"><span class="head" style="font-size:26px;color:var(--core-light);min-width:110px;line-height:1;">55,000 km</span><div class="body" style="font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.5;">of canals and drains digitised</div></div>
+        <div style="display:flex;gap:16px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.08);"><span class="head" style="font-size:26px;color:var(--core-light);min-width:110px;line-height:1;">12</span><div class="body" style="font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.5;">NWRC institutes open to company pilots</div></div>
+        <p class="body" style="font-size:13px;color:#fff;margin-top:14px;line-height:1.5;">Next shift: from mega plants to decentralised treatment. A market for Egyptian SMEs in modular units, O&amp;M and monitoring.</p>
+        <div class="body src">Minister of Water Resources and Irrigation, 28 Oct 2026</div>
+      </div>
+      <div class="head" style="position:absolute;bottom:18px;left:28px;font-size:11px;letter-spacing:1.5px;color:rgba(255,255,255,0.3);">03 / 08</div>
+      <div style="position:absolute;right:0;top:0;bottom:0;width:44px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to right,transparent,rgba(255,255,255,0.07));z-index:8;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 5l5 5-5 5" stroke="rgba(255,255,255,0.32)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <!-- 4 SKILLS -->
+    <div class="slide light">
+      <div style="position:absolute;top:-90px;left:-70px;width:260px;height:260px;border-radius:50%;background:var(--core);opacity:0.06;"></div>
+      <div style="position:relative;z-index:2;">
+        <span class="eyebrow body" style="color:var(--core);">The skills gap</span>
+        <h2 class="head h2" style="font-weight:400;">Strong engineers. Thin commercial skills.</h2>
+        <div style="padding:16px 20px;background:var(--core-soft);border-left:3px solid var(--core);border-radius:0 12px 12px 0;">
+          <div class="head" style="font-size:52px;color:var(--core);line-height:1;letter-spacing:-1.5px;">2.7 <span style="font-size:24px;">/ 5</span></div>
+          <div class="body" style="font-size:12.5px;font-weight:600;margin-top:6px;">How graduates rate their readiness for the job market</div>
+          <div class="body" style="font-size:11px;color:var(--muted);margin-top:2px;">Live poll, 23 responses</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;">
+          <div style="padding:12px 14px;background:#fff;border:1px solid var(--rule);border-radius:12px;"><div class="head" style="font-size:26px;color:var(--core);">~30%</div><div class="body" style="font-size:11.5px;color:var(--muted);line-height:1.4;">of research publications taken up by companies (NWRC)</div></div>
+          <div style="padding:12px 14px;background:#fff;border:1px solid var(--rule);border-radius:12px;"><div class="head" style="font-size:26px;color:var(--core);">#1</div><div class="body" style="font-size:11.5px;color:var(--muted);line-height:1.4;">missing skill: contracts, costs and finance</div></div>
+        </div>
+      </div>
+      <div class="head" style="position:absolute;bottom:18px;left:28px;font-size:11px;letter-spacing:1.5px;color:rgba(0,0,0,0.22);">04 / 08</div>
+      <div style="position:absolute;right:0;top:0;bottom:0;width:44px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to right,transparent,rgba(0,0,0,0.05));z-index:8;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 5l5 5-5 5" stroke="rgba(0,0,0,0.22)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <!-- 5 FIRST CONTRACT TRAP -->
+    <div class="slide dark">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.035) 1px,transparent 1px);background-size:22px 22px;"></div>
+      <div style="position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;background:var(--core);opacity:0.18;"></div>
+      <div style="position:relative;z-index:2;">
+        <span class="eyebrow body" style="color:var(--gold);">The first-contract trap</span>
+        <h2 class="head h2" style="font-weight:400;">Banks want a track record. A first contract is how you get one.</h2>
+        <div style="padding:22px 24px;background:rgba(255,255,255,0.06);border-radius:16px;border:1px solid rgba(255,255,255,0.08);">
+          <div class="head" style="font-size:40px;color:var(--core-light);line-height:0.7;font-style:italic;">“</div>
+          <p class="head" style="font-size:22px;color:#fff;line-height:1.3;font-style:italic;">Nobody is working to fill this gap.</p>
+          <div style="height:2px;width:36px;background:var(--gold);border-radius:2px;margin-top:14px;"></div>
+          <div class="body" style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:10px;">Fireside chat: From Campus Pilot to Purchase Order</div>
+        </div>
+        <p class="body" style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:14px;line-height:1.5;">Top poll answer on the barrier: "no buyer willing to take a risk on a first-time firm or product."</p>
+      </div>
+      <div class="head" style="position:absolute;bottom:18px;left:28px;font-size:11px;letter-spacing:1.5px;color:rgba(255,255,255,0.3);">05 / 08</div>
+      <div style="position:absolute;right:0;top:0;bottom:0;width:44px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to right,transparent,rgba(255,255,255,0.07));z-index:8;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 5l5 5-5 5" stroke="rgba(255,255,255,0.32)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <!-- 6 RISK SPLIT -->
+    <div class="slide light">
+      <div style="position:absolute;bottom:-90px;right:-60px;width:260px;height:260px;border-radius:50%;background:var(--core);opacity:0.06;"></div>
+      <div style="position:absolute;top:30px;right:40px;width:90px;height:90px;border-radius:50%;background:var(--gold);opacity:0.10;"></div>
+      <div style="position:relative;z-index:2;">
+        <span class="eyebrow body" style="color:var(--core);">A proposed risk split</span>
+        <h2 class="head h2" style="font-weight:400;">Who carries what on a first deployment</h2>
+        <div style="display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);"><span class="head" style="font-size:26px;color:var(--core);min-width:30px;line-height:1;">1</span><div><div class="body" style="font-size:14px;font-weight:700;">Public side</div><div class="body" style="font-size:12px;color:var(--muted);">Policy, land and payment risk</div></div></div>
+        <div style="display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);"><span class="head" style="font-size:26px;color:var(--core);min-width:30px;line-height:1;">2</span><div><div class="body" style="font-size:14px;font-weight:700;">Private partner</div><div class="body" style="font-size:12px;color:var(--muted);">Execution and performance risk</div></div></div>
+        <div style="display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);"><span class="head" style="font-size:26px;color:var(--core);min-width:30px;line-height:1;">3</span><div><div class="body" style="font-size:14px;font-weight:700;">Technology firm</div><div class="body" style="font-size:12px;color:var(--muted);">Early-stage risk</div></div></div>
+        <div style="display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);"><span class="head" style="font-size:26px;color:var(--core);min-width:30px;line-height:1;">4</span><div><div class="body" style="font-size:14px;font-weight:700;">Development funders</div><div class="body" style="font-size:12px;color:var(--muted);">Guarantees and insurance</div></div></div>
+        <div class="body src">Proposed by 10 round tables moderated by Galala University</div>
+      </div>
+      <div class="head" style="position:absolute;bottom:18px;left:28px;font-size:11px;letter-spacing:1.5px;color:rgba(0,0,0,0.22);">06 / 08</div>
+      <div style="position:absolute;right:0;top:0;bottom:0;width:44px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to right,transparent,rgba(0,0,0,0.05));z-index:8;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 5l5 5-5 5" stroke="rgba(0,0,0,0.22)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <!-- 7 RECAP -->
+    <div class="slide dark">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.035) 1px,transparent 1px);background-size:22px 22px;"></div>
+      <div style="position:absolute;bottom:-100px;left:-80px;width:300px;height:300px;border-radius:50%;background:var(--core);opacity:0.18;"></div>
+      <div style="position:relative;z-index:2;">
+        <span class="eyebrow body" style="color:var(--gold);">Save this</span>
+        <h2 class="head" style="font-size:34px;font-weight:400;margin-bottom:20px;">The recap:</h2>
+        <div style="border-left:3px solid var(--core-light);padding:4px 0 4px 16px;margin-bottom:14px;"><div class="body" style="font-size:14px;line-height:1.45;">Demand is real: reuse, digitisation, decentralised treatment</div></div>
+        <div style="border-left:3px solid var(--core-light);padding:4px 0 4px 16px;margin-bottom:14px;"><div class="body" style="font-size:14px;line-height:1.45;">Graduates rate their readiness 2.7 / 5. Finance skills lag most</div></div>
+        <div style="border-left:3px solid var(--gold);padding:4px 0 4px 16px;margin-bottom:14px;"><div class="body" style="font-size:14px;line-height:1.45;font-weight:700;">The missing rung is the first buyer</div></div>
+        <div style="border-left:3px solid var(--core-light);padding:4px 0 4px 16px;"><div class="body" style="font-size:14px;line-height:1.45;">Split first-deployment risk across 4 parties</div></div>
+      </div>
+      <div class="head" style="position:absolute;bottom:18px;left:28px;font-size:11px;letter-spacing:1.5px;color:rgba(255,255,255,0.3);">07 / 08</div>
+      <div style="position:absolute;right:0;top:0;bottom:0;width:44px;display:flex;align-items:center;justify-content:center;background:linear-gradient(to right,transparent,rgba(255,255,255,0.07));z-index:8;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 5l5 5-5 5" stroke="rgba(255,255,255,0.32)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <!-- 8 CTA -->
+    <div class="slide grad" style="text-align:center;padding:44px 40px 56px;">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:440px;height:440px;border-radius:50%;border:1px solid rgba(255,255,255,0.07);"></div>
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:320px;height:320px;border-radius:50%;border:1px solid rgba(255,255,255,0.07);"></div>
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;border:1px solid rgba(255,255,255,0.07);"></div>
+      <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;">
+        <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;"><span class="head" style="color:#fff;font-size:15px;">AA</span></div>
+          <div style="text-align:left;"><div class="body" style="font-size:13px;font-weight:700;">Dr. Ayman Ayad</div><div class="body" style="font-size:11px;color:rgba(255,255,255,0.55);">@aymanayadr · LinkedIn</div></div>
+        </div>
+        <h2 class="head" style="font-size:31px;line-height:1.12;font-weight:400;margin-top:56px;max-width:420px;">Who should place Egypt's first order for an untested water technology?</h2>
+        <p class="body" style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:12px;">The utility, the ministry, or the funder?</p>
+        <div class="body" style="display:inline-flex;align-items:center;padding:14px 34px;background:#fff;color:var(--core-deep);font-weight:700;font-size:14px;border-radius:32px;margin-top:26px;">Answer in the comments</div>
+        <p class="body" style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:22px;">Personal views. Not EU policy or a funding commitment.</p>
+      </div>
+      <div class="head" style="position:absolute;bottom:18px;left:28px;font-size:11px;letter-spacing:1.5px;color:rgba(255,255,255,0.4);">08 / 08</div>
+      <div style="position:absolute;bottom:20px;right:28px;display:flex;align-items:center;gap:6px;z-index:9;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2.5"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        <span class="body" style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.5px;">Save this post</span>
+      </div>
+    </div>
+
+  </div></div>
+
+  <div class="lk-dots" id="dots" style="display:flex;justify-content:center;gap:5px;padding:10px 0 2px;background:#fff;"></div>
+  <div class="lk-pager body" id="pager" style="text-align:center;font-size:11px;color:rgba(0,0,0,0.4);padding-bottom:6px;background:#fff;">Slide 1 of 8</div>
+  <div class="lk-actions">
+    <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M7 10v11H3V10h4zm0 0l4-7a2 2 0 0 1 3 2l-1 5h6a2 2 0 0 1 2 2l-2 7a2 2 0 0 1-2 2H7"/></svg>Like</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg>Comment</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"/></svg>Repost</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>Send</div>
+  </div>
+</div>
+
+<div id="download-panel" style="width:540px;max-width:100%;margin-top:16px;background:#1a1a2e;border-radius:12px;padding:20px 24px;">
+  <div class="body" style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Download Slides</div>
+  <div id="dl-buttons" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+  <div class="body" style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:14px;line-height:1.5;">Downloads each slide as a 1080×1080px PNG · Powered by html2canvas · Web fonts need a moment to load</div>
+</div>
+
+<script>
+const track=document.getElementById('track'),vp=document.getElementById('viewport'),dotsEl=document.getElementById('dots'),pager=document.getElementById('pager');
+const TOTAL=8,W=540;let cur=0,startX=0,dragging=false;
+for(let i=0;i<TOTAL;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.addEventListener('click',()=>goTo(i));dotsEl.appendChild(d);}
+function goTo(i){cur=Math.max(0,Math.min(TOTAL-1,i));track.style.transform=`translateX(${-cur*W}px)`;document.querySelectorAll('.dot').forEach((d,idx)=>d.classList.toggle('active',idx===cur));pager.textContent=`Slide ${cur+1} of ${TOTAL}`;}
+vp.addEventListener('mousedown',e=>{dragging=true;startX=e.clientX;track.style.transition='none';});
+vp.addEventListener('touchstart',e=>{dragging=true;startX=e.touches[0].clientX;track.style.transition='none';},{passive:true});
+vp.addEventListener('mousemove',e=>{if(!dragging)return;track.style.transform=`translateX(${-cur*W+e.clientX-startX}px)`;});
+vp.addEventListener('touchmove',e=>{if(!dragging)return;track.style.transform=`translateX(${-cur*W+e.touches[0].clientX-startX}px)`;},{passive:true});
+const end=ex=>{if(!dragging)return;dragging=false;track.style.transition='transform 0.32s cubic-bezier(0.4,0,0.2,1)';const dx=ex-startX;if(dx<-50)goTo(cur+1);else if(dx>50)goTo(cur-1);else goTo(cur);};
+vp.addEventListener('mouseup',e=>end(e.clientX));vp.addEventListener('mouseleave',e=>end(e.clientX));vp.addEventListener('touchend',e=>end(e.changedTouches[0].clientX));
+function fit(){const z=Math.min(1,(window.innerWidth-32)/540);document.querySelector('.lk-frame').style.zoom=z;document.getElementById('download-panel').style.zoom=z;}
+fit();window.addEventListener('resize',fit);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')goTo(cur+1);if(e.key==='ArrowLeft')goTo(cur-1);});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+(function(){
+  const SLIDE_W=540,TOTAL=8,panel=document.getElementById('dl-buttons');
+  async function downloadSlide(i){
+    if(typeof html2canvas==='undefined')return;
+    track.style.transition='none';track.style.transform=`translateX(${-i*SLIDE_W}px)`;
+    await new Promise(r=>setTimeout(r,350));
+    const canvas=await html2canvas(vp,{scale:2,useCORS:true,width:SLIDE_W,height:SLIDE_W,backgroundColor:null,logging:false});
+    const link=document.createElement('a');link.download=`slide_${String(i+1).padStart(2,'0')}.png`;link.href=canvas.toDataURL('image/png');link.click();
+    track.style.transition='transform 0.32s cubic-bezier(0.4,0,0.2,1)';goTo(i);
+  }
+  const css='padding:8px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-family:DM Sans,sans-serif;font-size:12px;font-weight:500;cursor:pointer;';
+  for(let i=0;i<TOTAL;i++){const b=document.createElement('button');b.textContent=`↓ Slide ${i+1}`;b.style.cssText=css;b.onclick=()=>downloadSlide(i);panel.appendChild(b);}
+  const all=document.createElement('button');all.textContent='↓ Download All';all.style.cssText='padding:8px 18px;background:#003399;border:none;border-radius:8px;color:#fff;font-family:DM Sans,sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-left:4px;';
+  all.onclick=async()=>{all.textContent='Downloading…';for(let i=0;i<TOTAL;i++){await downloadSlide(i);await new Promise(r=>setTimeout(r,600));}all.textContent='✓ Done';setTimeout(()=>all.textContent='↓ Download All',2000);};
+  panel.appendChild(all);
+})();
+</script>
+</body>
+</html>
